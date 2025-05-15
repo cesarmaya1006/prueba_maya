@@ -1144,5 +1144,11 @@ class MunicipioSeeder extends Seeder
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             ]);
         }
+        DB::table('users')->insert([
+                'name' => 'Administrador',
+                'email' =>'mayatolozaeduardo@gmail.com',
+                'password' => bcrypt('123456789'),
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            ]);
     }
 }
