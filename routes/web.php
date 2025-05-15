@@ -9,8 +9,10 @@ use Illuminate\Support\Facades\Route;
 //Route::get('/', function () {return view('welcome');});
 //Route::get('/', function () {return view('extranet.index');});
 
+
 Route::controller(extranetController::class)->group(function () {
     Route::get('/', 'index')->name('extranet.index');
+    Route::get('/login', 'login')->name('login');
 });
 
 
@@ -24,6 +26,7 @@ Route::controller(DepartamentoController::class)->prefix('departamento')->group(
 Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',])->group(function () {
     Route::controller(intranetController::class)->group(function () {
         Route::get('dashboard', 'dashboard')->name('dashboard');
+        Route::post('ganador', 'ganador')->name('ganador');
     });
     //Route::get('/dashboard', function () {return view('dashboard');})->name('dashboard');
 });

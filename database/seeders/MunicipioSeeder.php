@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -1144,11 +1145,10 @@ class MunicipioSeeder extends Seeder
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             ]);
         }
-        DB::table('users')->insert([
-                'name' => 'Administrador',
-                'email' =>'mayatolozaeduardo@gmail.com',
-                'password' => bcrypt('123456789'),
-                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-            ]);
+        $usuario1 = User::create([
+            'name' => 'Cesar Maya',
+            'email' => 'cesarmaya1006@gmail.com',
+            'password' => bcrypt('123456789')
+        ]);
     }
 }

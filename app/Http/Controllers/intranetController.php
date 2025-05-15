@@ -13,7 +13,7 @@ class intranetController extends Controller
     public function dashboard()
     {
         $clientes = Cliente::get();
-        return view('dashboard',compact('clientes'));
+        return view('intranet.dashboard',compact('clientes'));
     }
 
     /**
@@ -27,9 +27,16 @@ class intranetController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function ganador(Request $request)
     {
-        //
+        $clientes = Cliente::get();
+        $ultimo = $clientes->last();
+        $idGanador = rand(1,$ultimo->id);
+
+        $cambio['ganador'] = 1;
+        Cliente::findOrFail($idGanador)->update($cambio);
+        return redirect('dashboard')->with('mensaje', 'Ganador Elegido');
+
     }
 
     /**

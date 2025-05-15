@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cliente;
 use App\Models\Departamento;
 use Illuminate\Http\Request;
 
@@ -13,7 +14,12 @@ class extranetController extends Controller
     public function index()
     {
         $departamentos = Departamento::get();
-        return view('extranet.index',compact('departamentos'));
+        $clientes = Cliente::get();
+        return view('extranet.index',compact('departamentos','clientes'));
+    }
+    public function login()
+    {
+        return view('extranet.login');
     }
 
     /**
